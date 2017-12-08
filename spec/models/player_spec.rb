@@ -14,4 +14,15 @@ describe Player do
 
     expect(result).to eq(10_000)
   end
+
+  context ".active" do
+    it "returns only players with funds greater than 0" do
+      Player.create(name: "Darth Vader", money: 100)
+      Player.create(name: "Luke Skywalker", money: 0)
+
+      result = Player.active
+
+      expect(result.size).to eq 1
+    end
+  end
 end

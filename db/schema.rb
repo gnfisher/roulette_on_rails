@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171208161303) do
+ActiveRecord::Schema.define(version: 20171209145748) do
 
   create_table "players", force: :cascade do |t|
     t.string   "name"
@@ -19,5 +19,26 @@ ActiveRecord::Schema.define(version: 20171208161303) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
+
+  create_table "rounds", force: :cascade do |t|
+    t.string   "result",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "rounds", ["result"], name: "index_rounds_on_result"
+
+  create_table "wagers", force: :cascade do |t|
+    t.integer  "player_id",     null: false
+    t.integer  "amount",        null: false
+    t.string   "color_guessed", null: false
+    t.integer  "winnings",      null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "round_id",      null: false
+  end
+
+  add_index "wagers", ["player_id"], name: "index_wagers_on_player_id"
+  add_index "wagers", ["round_id"], name: "index_wagers_on_round_id"
 
 end
