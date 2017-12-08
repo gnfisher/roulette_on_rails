@@ -1,0 +1,6 @@
+<%= player_form(player: @player, heading: "Update player record") do |form| %>
+  <p>
+    <%= form.label :money %>
+    <%= form.number_field :money, required: true %>
+  </p>
+<% end %>
