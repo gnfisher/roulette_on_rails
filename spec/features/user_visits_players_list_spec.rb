@@ -7,6 +7,6 @@ feature "User visits players list" do
     visit players_path
 
     expect(page).to have_content("Darth Vader")
-    expect(page).to have_content("$1,000")
+    expect(page).to have_content("$10,000")
   end
 end

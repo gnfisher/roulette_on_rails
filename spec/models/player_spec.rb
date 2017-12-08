@@ -6,6 +6,6 @@ describe Player do
 
     result = player.money
 
-    expect(result).to eq(1_000)
+    expect(result).to eq(10_000)
   end
 end

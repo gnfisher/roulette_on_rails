@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171208153601) do
+ActiveRecord::Schema.define(version: 20171208161303) do
 
   create_table "players", force: :cascade do |t|
     t.string   "name"
-    t.integer  "money",      default: 1000
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.integer  "money",      default: 10000
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
 end
