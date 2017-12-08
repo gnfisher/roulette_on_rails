@@ -1,0 +1,23 @@
+<%= form_for @player do |form| %>
+  <% if @player.errors.any? %>
+    <h3>Errors</h3>
+    <ul>
+      <%= @player.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <fieldset>
+    <legend>Add a new player</legend>
+    <p>
+      <%= form.label :name do %>
+        Name <abbr title="required">*</abbr>
+      <% end %>
+      <%= form.text_field :name, required: true %>
+    </p>
+    <p>
+      <%= form.submit "Save" %>
+    </p>
+  </fieldset>
+<% end %>
