@@ -8,7 +8,7 @@ describe PlayerRound do
       allow(player).to receive(:with_lock).and_yield
       allow(Wager).to receive(:create!)
 
-      PlayerRound.new(player: player, raining: true, round: round).place_wager
+      PlayerRound.new(player: player, round: round).place_wager
 
       expect(player).to have_received(:with_lock)
       expect(player).to have_received(:update!).with(money: player.money)
@@ -19,7 +19,7 @@ describe PlayerRound do
       player = Player.create(name: "Darth Vader")
       allow(Wager).to receive(:create!)
 
-      PlayerRound.new(player: player, raining: true, round: round).place_wager
+      PlayerRound.new(player: player, round: round).place_wager
 
       expect(Wager).to have_received(:create!).once
     end
@@ -31,7 +31,7 @@ describe PlayerRound do
         raining = false
         round = double("round")
         player = Player.new(name: "Darth Vader", money: 1_000)
-        player_wager = PlayerRound.new(player: player, raining: raining, round: round)
+        player_wager = PlayerRound.new(player: player, round: round)
 
         result = player_wager.wager_amount
 
@@ -42,9 +42,9 @@ describe PlayerRound do
     context "player has more than 1_000 money" do
       it "wagers between 8 and 15 percent of money if not raining" do
         raining = false
-        round = double("round")
+        round = double("round", raining: false)
         player = Player.new(name: "Darth Vader", money: 10_000)
-        player_wager = PlayerRound.new(player: player, raining: raining, round: round)
+        player_wager = PlayerRound.new(player: player, round: round)
 
         result = player_wager.wager_amount
 
@@ -53,9 +53,9 @@ describe PlayerRound do
 
       it "wagers between 4 and 10 percent of money if raining" do
         raining = true
-        round = double("round")
+        round = double("round", raining: true)
         player = Player.new(name: "Darth Vader", money: 10_000)
-        player_wager = PlayerRound.new(player: player, raining: raining, round: round)
+        player_wager = PlayerRound.new(player: player, round: round)
 
         result = player_wager.wager_amount
 
@@ -66,10 +66,10 @@ describe PlayerRound do
     describe "#winner?" do
       it "returns true if the player guess is a winner" do
         winning_result = "green"
-        round = double("round", result: winning_result)
+        round = double("round", result: winning_result).as_null_object
         player = Player.new(name: "Darth Vader", money: 10_000)
         allow(RouletteGame).to receive(:pick_color).and_return(winning_result)
-        player_wager= PlayerRound.new(player: player, raining: false, round: round)
+        player_wager= PlayerRound.new(player: player, round: round)
 
         result = player_wager.winner?
 

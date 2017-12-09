@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171209145748) do
+ActiveRecord::Schema.define(version: 20171209205715) do
 
   create_table "players", force: :cascade do |t|
     t.string   "name"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20171209145748) do
     t.string   "result",     null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean  "raining",    null: false
   end
 
   add_index "rounds", ["result"], name: "index_rounds_on_result"

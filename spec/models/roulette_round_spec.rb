@@ -5,6 +5,8 @@ describe RouletteRound do
     it "fetches the current weather in santiago" do
       active_players = [spy("player")]
       player_wager = spy("player_wager")
+      round = spy(round)
+      allow(Round).to receive(:create!).and_return(round)
       allow(PlayerRound).to receive(:new).and_return(player_wager)
       allow(WeatherChecker).to receive(:raining?)
 
@@ -26,7 +28,7 @@ describe RouletteRound do
 
       expect(PlayerRound).
         to have_received(:new).
-        with(player: player, raining: true, round: round)
+        with(player: player, round: round)
       expect(player_wager).to have_recieved(:place_wager)
     end
   end
