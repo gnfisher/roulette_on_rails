@@ -54,6 +54,14 @@ GEM
     crass (1.0.3)
     database_cleaner (1.6.2)
     debug_inspector (0.0.3)
+    delayed_job (4.1.3)
+      activesupport (>= 3.0, < 5.2)
+    delayed_job_active_record (4.1.2)
+      activerecord (>= 3.0, < 5.2)
+      delayed_job (>= 3.0, < 5)
+    delayed_job_recurring (0.3.7)
+      delayed_job (>= 3.0)
+      delayed_job_active_record
     diff-lcs (1.3)
     erubis (2.7.0)
     execjs (2.7.0)
@@ -197,6 +205,8 @@ PLATFORMS
 DEPENDENCIES
   capybara
   database_cleaner
+  delayed_job_active_record
+  delayed_job_recurring
   jbuilder (~> 2.0)
   jquery-rails
   kaminari

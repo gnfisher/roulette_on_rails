@@ -10,6 +10,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'sqlite3'
 gem 'kaminari'
+gem 'delayed_job_active_record'
+gem 'delayed_job_recurring'
 
 group :development, :test do
   gem 'pry'
