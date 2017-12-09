@@ -1,4 +1,4 @@
-class RouletteRoundPlayer
+class RouletteRound
   def initialize(players)
     @players = players
   end

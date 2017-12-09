@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe RouletteRoundPlayer do
+describe RouletteRound do
   context ".play" do
     it "fetches the current weather in santiago" do
       active_players = [spy("player")]
@@ -8,7 +8,7 @@ describe RouletteRoundPlayer do
       allow(PlayerRound).to receive(:new).and_return(player_wager)
       allow(WeatherChecker).to receive(:raining?)
 
-      RouletteRoundPlayer.new(active_players).play
+      RouletteRound.new(active_players).play
 
       expect(WeatherChecker).to have_received(:raining?)
     end
@@ -22,7 +22,7 @@ describe RouletteRoundPlayer do
       player_wager = spy("player_wager")
       allow(PlayerRound).to receive(:new).and_return(player_wager)
 
-      RouletteRoundPlayer.new(active_players).play
+      RouletteRound.new(active_players).play
 
       expect(PlayerRound).
         to have_received(:new).
