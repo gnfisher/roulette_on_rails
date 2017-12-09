@@ -1,4 +1,4 @@
-class PlayerWager
+class PlayerRound
   def initialize(player:, raining:, round:)
     @player = player
     @raining = raining

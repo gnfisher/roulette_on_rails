@@ -5,7 +5,7 @@ class RouletteRoundPlayer
 
   def play
     @players.each do |player|
-      PlayerWager.
+      PlayerRound.
         new(player: player, raining: raining, round: round).
         place_wager
     end

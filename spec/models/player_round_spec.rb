@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe PlayerWager do
+describe PlayerRound do
   describe "#place_wager" do
     it "updates player money" do
       round = double("round").as_null_object
@@ -8,7 +8,7 @@ describe PlayerWager do
       allow(player).to receive(:with_lock).and_yield
       allow(Wager).to receive(:create!)
 
-      PlayerWager.new(player: player, raining: true, round: round).place_wager
+      PlayerRound.new(player: player, raining: true, round: round).place_wager
 
       expect(player).to have_received(:with_lock)
       expect(player).to have_received(:update!).with(money: player.money)
@@ -19,7 +19,7 @@ describe PlayerWager do
       player = Player.create(name: "Darth Vader")
       allow(Wager).to receive(:create!)
 
-      PlayerWager.new(player: player, raining: true, round: round).place_wager
+      PlayerRound.new(player: player, raining: true, round: round).place_wager
 
       expect(Wager).to have_received(:create!).once
     end
@@ -31,7 +31,7 @@ describe PlayerWager do
         raining = false
         round = double("round")
         player = Player.new(name: "Darth Vader", money: 1_000)
-        player_wager = PlayerWager.new(player: player, raining: raining, round: round)
+        player_wager = PlayerRound.new(player: player, raining: raining, round: round)
 
         result = player_wager.wager_amount
 
@@ -44,7 +44,7 @@ describe PlayerWager do
         raining = false
         round = double("round")
         player = Player.new(name: "Darth Vader", money: 10_000)
-        player_wager = PlayerWager.new(player: player, raining: raining, round: round)
+        player_wager = PlayerRound.new(player: player, raining: raining, round: round)
 
         result = player_wager.wager_amount
 
@@ -55,7 +55,7 @@ describe PlayerWager do
         raining = true
         round = double("round")
         player = Player.new(name: "Darth Vader", money: 10_000)
-        player_wager = PlayerWager.new(player: player, raining: raining, round: round)
+        player_wager = PlayerRound.new(player: player, raining: raining, round: round)
 
         result = player_wager.wager_amount
 
@@ -69,7 +69,7 @@ describe PlayerWager do
         round = double("round", result: winning_result)
         player = Player.new(name: "Darth Vader", money: 10_000)
         allow(RouletteGame).to receive(:pick_color).and_return(winning_result)
-        player_wager= PlayerWager.new(player: player, raining: false, round: round)
+        player_wager= PlayerRound.new(player: player, raining: false, round: round)
 
         result = player_wager.winner?
 
