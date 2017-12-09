@@ -13,7 +13,7 @@ class PlayerRound
         color_guessed: player_guess,
         winnings: winnings
       )
-      @player.update!(money: @player.money + winnings)
+      @player.update!(money: player_money_after_round)
     end
   end
 
@@ -39,6 +39,10 @@ class PlayerRound
 
   def player_guess
     @player_guess ||= RouletteGame.pick_color
+  end
+
+  def player_money_after_round
+    @player.money - wager_amount + winnings
   end
 
   def winnings
