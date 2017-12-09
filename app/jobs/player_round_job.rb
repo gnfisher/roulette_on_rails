@@ -1,5 +1,5 @@
-class PlayerRoundJobJob < ActiveJob::Base
-  def perform(player_id, round_id)
+class PlayerRoundJob < ActiveJob::Base
+  def perform(player_id:, round_id:)
     @player_id = player_id
     @round_id = round_id
 
@@ -9,11 +9,11 @@ class PlayerRoundJobJob < ActiveJob::Base
   private
 
   def perform_player_round
-    PlayerRound(player: player, round: round).place_wager
+    PlayerRound.new(player: player, round: round).place_wager
   end
 
   def player
-    Player.find(@user_id)
+    Player.find(@player_id)
   end
 
   def round
