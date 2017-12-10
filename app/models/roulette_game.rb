@@ -1,7 +1,7 @@
 class RouletteGame
   include Delayed::RecurringJob
 
-  run_every 1.minutes
+  run_every 3.minutes
 
   def self.pick_color
     case Array(1..100).sample
