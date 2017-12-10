@@ -4,7 +4,7 @@ feature "User views round history" do
   scenario "successfully" do
     setup_rounds
 
-    visit rounds_path
+    visit wagers_path
 
     expect(page).to have_content("Darth Vader", count: 3)
     expect(page).to have_content("Luke Skywalker", count: 3)

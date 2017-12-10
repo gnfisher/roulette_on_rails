@@ -1,4 +1,4 @@
-<h1>Rounds History</h1>
+<h1>Wager History</h1>
 
 <table>
   <th>
@@ -9,5 +9,9 @@
     <td>Outcome</td>
     <td>Timestamp</td>
   </th>
-  <%= render @rounds %>
+  <%= render @wagers %>
 </table>
+
+<p>
+  <%= paginate @wagers %>
+</p>
