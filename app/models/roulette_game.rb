@@ -9,4 +9,14 @@ class RouletteGame
       "black"
     end
   end
+
+  def self.calculate_winnings(round:, color_guessed:, wager:)
+    return unless color_guessed == round.result
+
+    if color_guessed == "green"
+      wager * 15
+    else
+      wager * 2
+    end
+  end
 end

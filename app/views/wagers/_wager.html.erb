@@ -1,0 +1,8 @@
+<tr>
+  <td>Round <%= wager.round_id %></td>
+  <td><%= wager.player.name %></td>
+  <td><%= wager.amount %> on <%= wager.color_guessed %></td>
+  <td><%= wager.round.result %></td>
+  <td><%= outcome_for(wager) %></td>
+  <td><%= time_ago_in_words(wager.created_at) %></td>
+</tr>

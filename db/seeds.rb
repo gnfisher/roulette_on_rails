@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+vader = Player.create(name: "Darth Vader")
+luke = Player.create(name: "Luke Skywalker")
+han = Player.create(name: "Han Solo")
+chewie = Player.create(name: "Chewbaca")
+
+20.times do
+  RouletteRound.new([vader, luke, han, chewie]).play
+end
