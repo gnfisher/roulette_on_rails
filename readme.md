@@ -15,18 +15,15 @@ This is a rails 4.2.5 application that simulates a game of roulette.
 
 == Installation
 
-Clone the repo
+Clone the repo: `git clone git@github.com:gnfisher/roulette_on_rails.git`
 
-  `git clone ...`
+Run the setup script: `bin/setup`
 
-Run the setup script
+Start foreman: `foreman start`
 
-  `bin/setup`
-
-Start foreman
-
-  `foreman start`
-
-Note that it takes three-minutes for the first game to run. Another game runs
+*Note* that it takes three-minutes for the first game to run. Another game runs
 automatically every three-minutes afterwards thereon.
 
+== About the code
+
+WIP
