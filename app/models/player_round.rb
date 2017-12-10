@@ -6,14 +6,8 @@ class PlayerRound
 
   def place_wager
     @player.with_lock do
-      Wager.create!(
-        player: @player,
-        round: @round,
-        amount: wager_amount,
-        color_guessed: player_guess,
-        winnings: winnings
-      )
-      @player.update!(money: player_money_after_round)
+      create_wager
+      update_player_money
     end
   end
 
@@ -27,10 +21,24 @@ class PlayerRound
 
   private
 
+  def create_wager
+    Wager.create!(
+      player: @player,
+      round: @round,
+      amount: wager_amount,
+      color_guessed: player_guess,
+      winnings: winnings
+    )
+  end
+
+  def update_player_money
+    @player.update!(money: player_money_after_round)
+  end
+
   def calculate_wager
     if money < 1_001
       money
-    elsif @round.raining?
+    elsif @round.raining
       between_4_and_10_percent
     else
       between_8_and_15_percent
