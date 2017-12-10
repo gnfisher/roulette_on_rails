@@ -1,7 +1,7 @@
 module PlayerFormHelper
   def player_form(player:, heading: "Add a player", &block)
     form_for player do |form|
-      output = <<~FORM
+      output = <<~HTML
         #{ show_errors_for(player) }
         <fieldset>
           <legend>#{heading}</legend>
@@ -16,7 +16,7 @@ module PlayerFormHelper
             #{form.submit("Save")}
           </p>
         </fieldset>
-      FORM
+      HTML
       output.html_safe
     end
   end
@@ -33,7 +33,6 @@ module PlayerFormHelper
       HTML
     end
   end
-
 
   def error_messages_for(player)
     player.errors.full_messages.map do |msg|
