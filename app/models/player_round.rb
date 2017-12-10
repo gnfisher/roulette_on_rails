@@ -20,7 +20,7 @@ class PlayerRound
   def wager_amount
     return money if money < 1_001
 
-    if @round.raining
+    @wager_amount = if @round.raining
       between_4_and_10_percent
     else
       between_8_and_15_percent
@@ -32,6 +32,16 @@ class PlayerRound
   end
 
   private
+
+  def calculate_wager
+    if money < 1_001
+      money
+    elsif @round.raining?
+      between_4_and_10_percent
+    else
+      between_8_and_15_percent
+    end
+  end
 
   def money
     @player.money
@@ -46,15 +56,11 @@ class PlayerRound
   end
 
   def winnings
-    @winnings ||= if winner?
-                    RouletteGame.calculate_winnings(
-                      round: @round,
-                      color_guessed: player_guess,
-                      wager: wager_amount
-                    )
-                  else
-                    0
-                  end
+    @winnings ||= RouletteGame.calculate_winnings(
+      round: @round,
+      color_guessed: player_guess,
+      wager: wager_amount
+    )
   end
 
   def between_4_and_10_percent
