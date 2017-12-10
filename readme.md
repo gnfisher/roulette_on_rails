@@ -1,6 +1,6 @@
-= Roulette
+# Roulette on Rails
 
-This is a rails 4.2.5 application that simulates a game of roulette.
+This is a rails 4.2.7.1 application that simulates a game of roulette.
 
 * Players start with $10,000 when created.
 * They will bet between 8 and 15 percent of their money each hand if it isn't
@@ -13,7 +13,7 @@ This is a rails 4.2.5 application that simulates a game of roulette.
 * Green gives x15 the wager.
 * At midnight players get $10,000 added to their purse.
 
-== Installation
+## Installation
 
 Clone the repo: `git clone git@github.com:gnfisher/roulette_on_rails.git`
 
@@ -24,6 +24,6 @@ Start foreman: `foreman start`
 *Note* that it takes three-minutes for the first game to run. Another game runs
 automatically every three-minutes afterwards thereon.
 
-== About the code
+## About the code
 
 WIP
