@@ -1,6 +1,6 @@
 <tr>
   <td>Round <%= wager.round_id %></td>
-  <td><%= link_to(wager.player.name, players_path) %></td>
+  <td><%= link_to(wager.player.name, players_path(wager.player)) %></td>
   <td><%= wager.amount %> on <%= wager.color_guessed %></td>
   <td><%= wager.round.result %></td>
   <td><%= outcome_for(wager) %></td>

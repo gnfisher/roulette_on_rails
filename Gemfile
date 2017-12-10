@@ -12,6 +12,7 @@ gem 'sqlite3'
 gem 'kaminari'
 gem 'delayed_job_active_record'
 gem 'delayed_job_recurring'
+gem 'open-weather'
 
 group :development, :test do
   gem 'pry'
