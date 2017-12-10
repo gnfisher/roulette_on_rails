@@ -4,4 +4,8 @@ class Player < ActiveRecord::Base
   def self.active
     where(money: 1..Float::INFINITY)
   end
+
+  def self.by_money
+    all.order(money: :desc)
+  end
 end

@@ -18,13 +18,7 @@ class PlayerRound
   end
 
   def wager_amount
-    return money if money < 1_001
-
-    @wager_amount = if @round.raining
-      between_4_and_10_percent
-    else
-      between_8_and_15_percent
-    end
+    @wager_amount ||= calculate_wager
   end
 
   def winner?

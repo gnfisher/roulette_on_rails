@@ -1,3 +1,0 @@
-RouletteGame.schedule!
-NightlyDepositTask.schedule!
-
