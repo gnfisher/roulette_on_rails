@@ -13,6 +13,7 @@ feature "User views round history" do
   def setup_rounds
     vader = Player.create(name: "Darth Vader")
     luke = Player.create(name: "Luke Skywalker")
+    allow(WeatherChecker).to receive(:raining?).and_return(:false)
 
     3.times do
       RouletteRound.new([vader, luke]).play
