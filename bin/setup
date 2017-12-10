@@ -6,8 +6,6 @@ bundle install
 # Set up the database
 bundle exec rake db:setup
 
-bundle exec rake recurring:init
-
 # Make sure forman is installed
 if ! command -v foreman > /dev/null; then
   printf 'Foreman is not installed.\n'
