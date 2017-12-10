@@ -21,6 +21,8 @@ Run the setup script: `bin/setup`
 
 Start foreman: `foreman start`
 
+Open `http://localhost:3000` in your browser.
+
 *Note* that it takes three-minutes for the first game to run. Another game runs
 automatically every three-minutes afterwards thereon.
 
