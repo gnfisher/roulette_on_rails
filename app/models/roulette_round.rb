@@ -5,9 +5,7 @@ class RouletteRound
 
   def play
     @players.each do |player|
-      PlayerRound.
-        new(player: player, round: round).
-        place_wager
+      PlayerRoundJob.perform_later(player_id: player.id, round_id: round.id)
     end
   end
 

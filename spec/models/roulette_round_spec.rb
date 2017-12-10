@@ -7,7 +7,7 @@ describe RouletteRound do
       player_wager = spy("player_wager")
       round = spy(round)
       allow(Round).to receive(:create!).and_return(round)
-      allow(PlayerRound).to receive(:new).and_return(player_wager)
+      allow(PlayerRoundJob).to receive(:perform_later)
       allow(WeatherChecker).to receive(:raining?)
 
       RouletteRound.new(active_players).play
@@ -15,21 +15,19 @@ describe RouletteRound do
       expect(WeatherChecker).to have_received(:raining?)
     end
 
-    it "creates a round and places wager for each player" do
+    it "schedules a PlayerRoundJob for each player" do
       player = spy("player")
       active_players = [player]
       allow(WeatherChecker).to receive(:raining?).and_return(true)
       round = spy("round")
       allow(Round).to receive(:create!).and_return(round)
-      player_wager = spy("player_wager")
-      allow(PlayerRound).to receive(:new).and_return(player_wager)
+      allow(PlayerRoundJob).to receive(:perform_later)
 
       RouletteRound.new(active_players).play
 
-      expect(PlayerRound).
-        to have_received(:new).
-        with(player: player, round: round)
-      expect(player_wager).to have_recieved(:place_wager)
+      expect(PlayerRoundJob).
+        to have_received(:perform_later).
+        with(player_id: player.id, round_id: round.id)
     end
   end
 end

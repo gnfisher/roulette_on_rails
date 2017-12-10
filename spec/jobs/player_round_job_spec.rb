@@ -8,7 +8,7 @@ describe PlayerRoundJob, type: :job do
     player_round = spy("player_round")
     allow(PlayerRound).to receive(:new).and_return(player_round)
 
-    PlayerRoundJob.perform_later(player_id: player.id, round_id: round.id)
+    PlayerRoundJob.perform_now(player_id: player.id, round_id: round.id)
 
     expect(PlayerRound).to have_received(:new).with(
       player: player,

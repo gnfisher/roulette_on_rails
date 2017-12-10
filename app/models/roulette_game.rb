@@ -1,4 +1,8 @@
 class RouletteGame
+  include Delayed::RecurringJob
+
+  run_every 1.minutes
+
   def self.pick_color
     case Array(1..100).sample
     when 1..2
@@ -18,5 +22,10 @@ class RouletteGame
     else
       wager * 2
     end
+  end
+
+  def perform
+    active_players = Player.active
+    RouletteRound.new(active_players).play
   end
 end
