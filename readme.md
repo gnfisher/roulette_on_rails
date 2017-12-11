@@ -67,7 +67,7 @@ day, as well as the ActiveRecord models for Wager, Player, etc.
 I think the app does a decent job of using Object Oriented Design principles to
 keep things loosely coupled and easy to reason about.
 
-The entire project was carried out using Design Driven Development techniques.
+The entire project was carried out using Discovery Testing techniques.
 Essentially, starting with a feature spec and working top down to discover value
 objects and collaborator objects, and then writing specs for those. I didn't
 write tests for the rake tasks nor for the WeatherChecker class. This was a code
